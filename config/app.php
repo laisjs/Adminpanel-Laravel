@@ -161,6 +161,9 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        //INTEGRAÇÃO REDE SOCIAL
+        //aqui fala qual a bibblioteca que o larável vai utilizar
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -225,7 +228,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+// apelidar o código - quando eu falar em 'sociliate' eu to me referindo a Laravel\Socilite\Facedes\Socialite::class
+        'Socialite'=>Laravel\Socilite\Facedes\Socialite::class
     ],
 
 ];

@@ -21,3 +21,8 @@ Route::get('/index',function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// auth/{provider} - provider está como parâmetro, pq quando ele digitar facebook vai executar o redirect provider
+Route::get('/auth/{provider}', 'Auth\LoginController@redirectToProvider');
+//executa um callback pra pdoer enviar as informações. 
+Route::get('/auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');

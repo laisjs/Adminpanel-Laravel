@@ -39,6 +39,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <!-- é uma sintaxe pra gente verificar se o usuario está auntenticado -->
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -48,9 +49,20 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
+
+                            <!-- se o usuario estiver logado -->
                         @else
                             <li class="nav-item dropdown">
+                            @if(Auth::user()->img != null)
+                            <img src="{{ Auth::user()->img}}" style="width:30px"/>
+                            @endif
+                        
+
+
+
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                   <!-- isso retorna todas as informações dousuárioq ue está autenticado no sistema -->
+                                   
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 

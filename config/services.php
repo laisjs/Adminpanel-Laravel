@@ -44,4 +44,13 @@ return [
         ],
     ],
 
+    'facebook' =>[
+        // essa informação como é uma chave e tem que estar na segurança, e essas informaÇÕES ficam no arquivo .env e o padrão do env é sempre em letra maiúscula
+        'client_id'=>  env('FACEBOOK_ID'),
+        //é como se fosse a nossa senha, so a gente tem acesso
+        'client_secret'=>  env('FACEBOOK_SECRET'),
+        //a ultima configuração é uma url redirect, preciso ter uma url que ele possa sair do meu site ir para o 
+        // facebook e voltar
+        'redirect'=> env('FACEBOOK_REDIRECT')
+    ]
 ];
