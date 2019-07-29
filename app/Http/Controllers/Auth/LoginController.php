@@ -71,7 +71,7 @@ class LoginController extends Controller
     // objetivo da função é procurar o usuário no banco de dados e se não existir retorna aquela função
     public function findOrCreateUser($user, $provider)
     {
-//eu vou verificar se o o id do provider existe, se existir vai retorar no usuário autenticado
+//eu vou verificar se o o id do provider existe, se existir vai retornar no usuário autenticado
 //1.
 // dd($user);
         $authUser = User::where('provider_id', $user->id)->first();

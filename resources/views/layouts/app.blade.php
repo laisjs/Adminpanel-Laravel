@@ -54,7 +54,7 @@
                         @else
                             <li class="nav-item dropdown">
                             @if(Auth::user()->img != null)
-                            <img src="{{ Auth::user()->img}}" style="width:30px"/>
+                            <img src="{{asset (Auth::user()->img)}}" style="width:30px"/>
                             @endif
                         
 

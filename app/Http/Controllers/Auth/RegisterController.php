@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Auth\Request;
 
 class RegisterController extends Controller
 {
@@ -63,11 +64,31 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        //aqui vamos pegar as informações que vem do formulário
+// $img = $request->file('avatar');
+// tudo que o larável vai salvar ele salva na pasta storage e dentro da storage vai salvar dentro do App
+//store: ele vai gerar um nome aleatório para o arquivo e cvai criar a pasta 'img '. Ela também devolve o caminho
+// onde está a imagem e salva na variável que eu criei caminho ou path
+
+// $caminho = $request->file('avatar')->store('img');
+//pegando o nome original do arquivo
+$nomeOriginal = $data['avatar']->getClientOriginalName();
+//montando a url necessária para acessar o arquivo corretamente
+$caminhoimg = 'storage/img/'. $nomeOriginal;
+//Salvando apenas a imagem
+$save = $data['avatar']->storeAs('public/img', $nomeOriginal);
+
+
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'nivel_user' => $data['nivel-user']
+            'nivel_user' => $data['nivel-user'],            
+            'img'=> $caminhoimg
         ]);
     }
+    // o larável não enxerga a pasta storage então preciso falar que ele vai ter acesso ao storage
+            //então precisa rodar um comando no termninal php artisan storage:link (ESSE COMANDO SÓ FAZ UMA VEZ NO PROJETO)
 }
